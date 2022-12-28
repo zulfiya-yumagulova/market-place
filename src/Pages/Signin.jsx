@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
 import { AiFillCaretRight } from "react-icons/ai";
 import { MdOutlineVisibility } from "react-icons/md";
 import visibilityIcon from "../assets/svg/visibilityIcon.svg";
@@ -20,6 +22,23 @@ function Signin() {
     }));
   };
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const auth = getAuth();
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      if (userCredential.user) {
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error("Bad User Credentiaols");
+    }
+  };
+
   return (
     <>
       <div className="pageContainer">
@@ -27,7 +46,7 @@ function Signin() {
           <p>Welcome Back!</p>
         </header>
         <main>
-          <form>
+          <form onSubmit={onSubmit}>
             <input
               type="email"
               className="emailInput"
