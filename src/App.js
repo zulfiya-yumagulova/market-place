@@ -5,6 +5,7 @@ import Navbar from "./Components/Navbar";
 import PrivateRoute from "./Components/PrivateRoute";
 import Explore from "./Pages/Explore";
 import Offers from "./Pages/Offers";
+import Category from "./Pages/Category";
 import Profile from "./Pages/Profile";
 import ForgotPassword from "./Pages/ForgotPassword";
 import Signin from "./Pages/Signin";
@@ -17,7 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Explore />} />
           <Route path="/offers" element={<Offers />} />
-          <Route path="/profile" element={<PrivateRoute />}>
+          <Route path="/offers" element={<Category />} />
+          <Route path="/category/:categoryName" element={<PrivateRoute />}>
             {" "}
             <Route path="/profile" element={<Profile />} />
           </Route>
