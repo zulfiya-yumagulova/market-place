@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import { AiFillCaretRight } from "react-icons/ai";
 import { MdOutlineVisibility } from "react-icons/md";
 import visibilityIcon from "../assets/svg/visibilityIcon.svg";
+import OAuth from "../Components/OAuth";
 function Signup() {
   const [showPassword, setShowpassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -110,7 +111,7 @@ function Signup() {
             </div>
           </form>
 
-          {/* Google Auth */}
+          <OAuth />
 
           <Link to="/sign-in" className="registerLink">
             Sign In
