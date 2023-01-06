@@ -12,22 +12,22 @@ function Explore() {
       <main>
         {/* Slider */}
         <p className="exploreCategoryHeading">Categories</p>
-        <div className="explorecategories">
+        <div className="exploreCategories">
           <Link to="/category/rent">
             <img
               src={rentCategoryImage}
               alt="rent"
               className="exploreCategoryImg"
             />
-            <p className="exploreCategoryName">Place for rent</p>
+            <p className="exploreCategoryName">Places for rent</p>
           </Link>
-          <Link to="/category/sell">
+          <Link to="/category/sale">
             <img
               src={sellCategoryImage}
-              alt="sell"
+              alt="sale"
               className="exploreCategoryImg"
             />
-            <p className="exploreCategoryName">Place for sell</p>
+            <p className="exploreCategoryName">Places for sale</p>
           </Link>
         </div>
       </main>
