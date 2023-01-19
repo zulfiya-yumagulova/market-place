@@ -48,9 +48,9 @@ function Category() {
           });
         });
 
-        setListings((prevState) => [...prevState, ...listings]);
+        setListings(listings);
         setLoading(false);
-        console.log(listings);
+        console.log(listings, "listings");
       } catch (error) {
         toast.error("could not fetch listings");
       }
