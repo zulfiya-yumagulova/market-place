@@ -59,6 +59,7 @@ function Category() {
     fetchListings();
   }, [params.categoryName]);
 
+  console.log(listings, "from category page");
   return (
     <div className="category">
       <header>
