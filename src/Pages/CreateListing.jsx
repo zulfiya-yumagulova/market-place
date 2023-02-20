@@ -48,6 +48,7 @@ function CreateListing() {
     longitude,
   } = formData;
 
+  // Location
   const auth = getAuth();
   const navigate = useNavigate();
   const isMounted = useRef(true);
@@ -103,11 +104,12 @@ function CreateListing() {
       location =
         data.status === "ZERO_RESULTS"
           ? undefined
-          : data.results[0].formatted_address;
+          : data.results[0]?.formatted_address;
 
       if (location === undefined || location.includes("undefined")) {
         setLoading(false);
         toast.error("Please enter a correct address");
+        return;
       }
     } else {
       geolocation.lat = latitude;
@@ -163,21 +165,24 @@ function CreateListing() {
       return;
     });
 
-    // const formDataCopy = {
-    //   ...formData,
-    //   imgUrls,
-    //   geolocation,
-    //   timestamp: serverTimestamp(),
-    // };
+    console.log(imgUrls);
 
-    // delete formDataCopy.images;
-    // delete formDataCopy.address;
-    // location && (formDataCopy.location = location);
-    // !formDataCopy.offer && delete formDataCopy.discountedPrice;
+    const formDataCopy = {
+      ...formData,
+      imgUrls,
+      geolocation,
+      timestamp: serverTimestamp(),
+    };
 
-    // const docRef = await addDoc(collection(db, "listings"), formDataCopy);
-    // toast.success("Listing saved");
-    // navigate(`/category/${formDataCopy.type}/${docRef}`);
+    formDataCopy.location = address;
+    delete formDataCopy.images;
+    delete formDataCopy.address;
+    location && (formDataCopy.location = location);
+    !formDataCopy.offer && delete formDataCopy.discountedPrice;
+
+    const docRef = await addDoc(collection(db, "listings"), formDataCopy);
+    toast.success("Listing saved");
+    navigate(`/category/${formDataCopy.type}/${docRef.id}`);
 
     setLoading(false);
   };
