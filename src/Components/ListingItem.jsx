@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as DeleteIcon } from "../assets/svg/deleteIcon.svg";
+import { ReactComponent as EditIcon } from "../assets/svg/editIcon.svg";
 import bedIcon from "../assets/svg/bedIcon.svg";
 import bathIcon from "../assets/svg/bathtubIcon.svg";
 
@@ -13,9 +14,9 @@ function ListingItem({ listing, id, onDelete }) {
         className="categoryListingLink"
       >
         <img
-          src={listing.imageUrls[0]}
+          src={listing.imgUrls[0]}
           alt={listing.name}
-          className="categoryLinstongImg"
+          className="categoryLinstingImg"
         />
         <div className="categoryListingDetails">
           <p className="categoryListingLocation">{listing.location}</p>
@@ -33,7 +34,7 @@ function ListingItem({ listing, id, onDelete }) {
           </p>
           <div className="categoryListingInfoDiv">
             <img src={bedIcon} alt="bed" />
-            <p className="categoeyListingInfoIText">
+            <p className="categoeyListingInfoText">
               {listing.bedrooms > 1
                 ? `${listing.bedrooms} Bedrooms`
                 : "1 Bedroom"}
@@ -52,7 +53,7 @@ function ListingItem({ listing, id, onDelete }) {
         <DeleteIcon
           className="removeIcon"
           fill="rgba(231, 76, 60)"
-          onClick={() => onDelete(listing.ig, listing.name)}
+          onClick={() => onDelete(listing.id, listing.name)}
         />
       )}
     </li>
