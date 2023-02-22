@@ -16,7 +16,7 @@ function ListingItem({ listing, id, onDelete }) {
         <img
           src={listing.imgUrls[0]}
           alt={listing.name}
-          className="categoryLinstingImg"
+          className="categoryListingImg"
         />
         <div className="categoryListingDetails">
           <p className="categoryListingLocation">{listing.location}</p>
