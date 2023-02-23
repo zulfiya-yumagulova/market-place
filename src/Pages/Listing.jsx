@@ -43,16 +43,28 @@ function Listing() {
       <Swiper slidesPerView={1} pagination={{ clickable: true }}>
         {listing.imgUrls.map((url, index) => (
           <SwiperSlide key={index}>
-            <div
+            {/* <div
               style={{
                 background: `url(${listing.imgUrls[index]}) center no-repeat`,
                 backgroundSize: "cover",
               }}
               className="swiperSlideDiv"
-            ></div>
+            ></div> */}
+            <div className="swiperSlideDiv">
+              <img
+                src={listing.imgUrls[index]}
+                alt="house"
+                style={{
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                }}
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
+
       {/* Share with friends function */}
       <div
         className="shareIconDiv"
