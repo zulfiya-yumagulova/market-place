@@ -93,9 +93,7 @@ function Listing() {
         {/* Map */}
 
         {auth.currentUser?.uid !== listing.userRef && (
-          <Link
-            to={`/contact/${listing.userRef}?listingName=${listing.name}&listingLocation=${listing.location}`}
-          >
+          <Link to={`/contact/${listing.userRef}?listingName=${listing.name}`}>
             Contact Landlord
           </Link>
         )}

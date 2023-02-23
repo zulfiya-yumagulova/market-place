@@ -12,6 +12,7 @@ import Signin from "./Pages/Signin";
 import Signup from "./Pages/Signup";
 import CreateListing from "./Pages/CreateListing";
 import Listing from "./Pages/Listing";
+import Contact from "./Pages/Contact";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             path="/category/:categoryName/:listingId"
             element={<Listing />}
           />
+          <Route path="/contact/:landlordId" element={<Contact />} />
         </Routes>
 
         <Navbar />
