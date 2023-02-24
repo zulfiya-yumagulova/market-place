@@ -8,8 +8,14 @@ import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import Spinner from "../Components/Spinner";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import "swiper/css/a11y";
 import shareIcon from "../assets/svg/shareIcon.svg";
 import { list } from "firebase/storage";
+SwiperCore.use(Navigation, Pagination, Scrollbar, A11y);
 
 function Listing() {
   const [listing, setListing] = useState(null);
@@ -40,31 +46,27 @@ function Listing() {
   return (
     <main>
       {/* Slider */}
-      <Swiper slidesPerView={1} pagination={{ clickable: true }}>
-        {listing.imgUrls.map((url, index) => (
-          <SwiperSlide key={index}>
-            {/* <div
-              style={{
-                background: `url(${listing.imgUrls[index]}) center no-repeat`,
-                backgroundSize: "cover",
-              }}
-              className="swiperSlideDiv"
-            ></div> */}
-            <div className="swiperSlideDiv">
-              <img
-                src={listing.imgUrls[index]}
-                alt="house"
+      <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        navigation
+        style={{ height: "300px" }}
+      >
+        {listing.imgUrls.map((url, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <div
+                className="swiperSlideDiv"
                 style={{
+                  background: `url(${listing.imgUrls[index]}) center no-repeat`,
                   backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
                 }}
-              />
-            </div>
-          </SwiperSlide>
-        ))}
+              ></div>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
-
       {/* Share with friends function */}
       <div
         className="shareIconDiv"
