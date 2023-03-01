@@ -12,7 +12,6 @@ import {
 import { db } from "../firebase.config";
 import { toast } from "react-toastify";
 import Spinner from "../Components/Spinner";
-import { async } from "@firebase/util";
 import ListingItem from "../Components/ListingItem";
 
 function Offers() {

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./Components/Navbar";
 import PrivateRoute from "./Components/PrivateRoute";
@@ -13,6 +13,7 @@ import Signup from "./Pages/Signup";
 import CreateListing from "./Pages/CreateListing";
 import Listing from "./Pages/Listing";
 import Contact from "./Pages/Contact";
+import EditListing from "./Pages/EditListing";
 
 function App() {
   return (
@@ -29,6 +30,11 @@ function App() {
           <Route path="/sign-up" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/create-listing" element={<CreateListing />} />
+          <Route
+            path="/category/:categoryName/:listingId"
+            element={<Listing />}
+          />
+          <Route path="/edit-listing" element={<EditListing />} />
           <Route
             path="/category/:categoryName/:listingId"
             element={<Listing />}
